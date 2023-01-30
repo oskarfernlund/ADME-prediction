@@ -5,31 +5,35 @@ Description.
 
 ## Building the Environment :hammer:
 
-All dependencies can be found in the `pyproject.toml` file. The setup instructions 
-below assumes you have [pyenv](https://github.com/pyenv/pyenv) and 
-[poetry](https://python-poetry.org/) installed. To set up the poetry environment, run 
-the following in a shell:
+To build the environment, run the following commands in a shell:
 
 ```
-$ poetry env use 3.10
-$ poetry update
+$ python -m venv env
+$ source env/bin/activate
+$ (env) source setup.sh
 ```
 
-To activate the environment in a nested shell, run:
+Note that only some of the dependencies are in the `requirements.txt` file; merely 
+installing these is not sufficient. The reason the `setup.sh` script exists is because [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/) needs to be 
+installed from source and involves several steps which need to be executed in sequence, 
+and one of its dependencies needs to be installed directly from GitHub as it not hosted 
+on PyPi.
+
+To create a Jupyter kernel, run:
 
 ```
-$ poetry shell
+$ (env) ipython kernel install --name "env" --user
 ```
+
+**Note**: The setup instructions above have only been tested for python 3.10 on M1 Mac. 
 
 
 ## Running the Jupyter Notebook :running:
 
-The jupyter notebook has been converted to markdown using 
-[jupytext](https://jupytext.readthedocs.io/en/latest/install.html) (to reduce storage 
-requirements on GitHub). To convert it back to `.ipynb` format and run it in the nested 
-shell, run:
+The [Jupyter](https://jupyter.org/) notebook has been converted to markdown using 
+[Jupytext](https://jupytext.readthedocs.io/en/latest/install.html) (to reduce storage requirements on GitHub). To convert it back to `.ipynb` format and run it, run the following commands:
 
 ```
-$ jupytext --to ipynb *.md 
-$ jupyter notebook
+$ (env) jupytext --to ipynb *.md 
+$ (env) jupyter notebook
 ```
