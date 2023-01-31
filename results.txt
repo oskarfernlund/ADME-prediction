@@ -1,0 +1,5 @@
+Results
+-------
+Graph Neural Network model: Accuracy = 0.7300
+Random Forest model: Accuracy = 0.7734
+Transformer model: Accuracy = 0.5823

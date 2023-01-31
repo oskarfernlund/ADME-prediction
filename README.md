@@ -1,6 +1,13 @@
 # ADME Prediction :microscope:
+---
 
-Description.
+ADME (Absorption, Distribution, Metabolism and Excretion) prediction for small molecules using three different models:
+
+1. A graph neural network
+2. A random forest
+3. A transformer
+
+Results are computed and logged in the `results.txt` file.
 
 
 ## Building the Environment :hammer:
@@ -37,3 +44,9 @@ The [Jupyter](https://jupyter.org/) notebook has been converted to markdown usin
 $ (env) jupytext --to ipynb *.md 
 $ (env) jupyter notebook
 ```
+
+
+### The Dataset :bar_chart:
+
+The dataset used is the CYP P450 2C19 Inhibition dataset from [Therapeutic Data Commons](https://tdcommons.ai/). The task is binary classification of CYP2C19 inhibition given a drug's SMILE string.
+
